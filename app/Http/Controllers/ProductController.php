@@ -7,10 +7,23 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        return view('products.index', ['products' => $products]); 
+        $query = Product::query();
+        
+        if ($request->has('search')) {
+            $search = $request->get('search');
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('category', 'like', "%{$search}%")
+                  ->orWhere('sku', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%")
+                  ->orWhere('supplier_name', 'like', "%{$search}%");
+            });
+        }
+        
+        $products = $query->latest()->get();
+        return view('products.index', compact('products')); 
     }
 
     public function create()

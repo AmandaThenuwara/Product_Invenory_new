@@ -1,24 +1,51 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-2 rounded-lg shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        <div class="bg-gradient-to-r from-[#0D47A1] to-[#1976D2] p-6 rounded-xl shadow-lg">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-6">
+                    <div class="bg-gradient-to-br from-blue-500 to-blue-600 p-3 rounded-xl shadow-lg transform hover:rotate-3 transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">{{ __('Products Details') }}</h2>
+                        <p class="text-slate-300 text-sm">Manage your product details efficiently.</p>
+                    </div>
+                </div>
+            <div class="flex items-center gap-4">
+                <form action="{{ route('products.index') }}" method="GET" class="flex items-center gap-2">
+                    <div class="relative">
+                        <input type="text" name="search" value="{{ request('search') }}" 
+                               class="w-72 rounded-lg border-0 bg-white/10 px-4 py-2.5 text-white placeholder-blue-100 backdrop-blur-sm transition-all duration-300 
+                                      focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                               placeholder="Search by name, category, or SKU...">
+                    </div>
+                    <button type="submit" class="p-2.5 bg-blue-500/20 text-white rounded-lg hover:bg-blue-500/30 transition-all duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+                    @if(request('search'))
+                        <a href="{{ route('products.index') }}" 
+                           class="p-2.5 bg-red-500/20 text-white rounded-lg hover:bg-red-500/30 transition-all duration-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </a>
+                    @endif
+                </form>
+                <a href="{{ route('products.create') }}" 
+                   class="group px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg shadow-md 
+                          hover:shadow-blue-500/20 hover:from-blue-500 hover:to-blue-600 transition-all duration-200 
+                          active:scale-95 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:rotate-180 transition-transform duration-500" 
+                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                     </svg>
-                </div>
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-800">{{ __('Products Details') }}</h2>
-                    <p class="text-sm text-gray-600">Manage your product details efficiently.</p>
-                </div>
+                    <span>{{ __('Add New Product') }}</span>
+                </a>
             </div>
-            <a href="{{ route('products.create') }}" 
-               class="group px-6 py-3 bg-gradient-to-r from-[#3B82F6] to-[#2563EB] text-white rounded-lg shadow-md hover:shadow-xl hover:from-[#2563EB] hover:to-[#1D4ED8] transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                <span>{{ __('Add New Product') }}</span>
-            </a>
         </div>
     </x-slot>
     <div class="py-6 px-4 sm:px-6 lg:px-8 bg-[#F5F5F5]">
@@ -28,7 +55,7 @@
         </div>
         @endif
 
-        <div class="overflow-x-auto bg-white rounded-xl shadow-xl border border-[#64B5F6]/30">
+        <div class="overflow-x-auto bg-white rounded-xl shadow-lg border border-[#64B5F6]/30">
             <div class="align-middle inline-block min-w-full">
                 <table class="min-w-full divide-y divide-[#E3F2FD]">
                     <thead>

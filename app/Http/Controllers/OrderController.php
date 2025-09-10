@@ -7,10 +7,22 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::all();
-        return view('orders.index',['orders' =>$orders]);
+        $query = Order::query();
+        
+        if ($request->has('search')) {
+            $search = $request->get('search');
+            $query->where(function($q) use ($search) {
+                $q->where('order_id', 'like', "%{$search}%")
+                  ->orWhere('company_name', 'like', "%{$search}%")
+                  ->orWhere('status', 'like', "%{$search}%")
+                  ->orWhereRaw('CAST(total_amount as CHAR) LIKE ?', ["%{$search}%"]);
+            });
+        }
+        
+        $orders = $query->latest()->get();
+        return view('orders.index', compact('orders'));
     }
     public function create()
     {
