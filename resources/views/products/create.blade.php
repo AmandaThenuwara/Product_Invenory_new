@@ -72,8 +72,13 @@
 
                                     <div>
                                         <label for="supplier_name" class="text-[#3B82F6] font-medium">Supplier Name *</label>
-                                        <input type="text" id="supplier_name" name="supplier_name" required 
+                                        <select id="supplier_name" name="supplier_name" required 
                                             class="h-10 border-2 mt-1 rounded-lg px-4 w-full bg-[#F3F4F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6] focus:border-[#3B82F6] transition-colors">
+                                            <option value="">Select a supplier</option>
+                                            @foreach($suppliers as $supplier)
+                                                <option value="{{ $supplier->company_name }}">{{ $supplier->company_name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
 
                                     <div>
