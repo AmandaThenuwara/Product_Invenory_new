@@ -8,8 +8,8 @@
                     </svg>
                 </div>
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-800">{{ __('Products Management') }}</h2>
-                    <p class="text-sm text-gray-600">Manage your inventory efficiently</p>
+                    <h2 class="text-2xl font-bold text-gray-800">{{ __('Products Details') }}</h2>
+                    <p class="text-sm text-gray-600">Manage your product details efficiently.</p>
                 </div>
             </div>
             <a href="{{ route('products.create') }}" 
@@ -21,39 +21,53 @@
             </a>
         </div>
     </x-slot>
-    <div class="py-6 px-4 sm:px-6 lg:px-8">
+    <div class="py-6 px-4 sm:px-6 lg:px-8 bg-[#F5F5F5]">
         @if (session()->has('success'))
-        <div class="mb-4 p-4 rounded-lg bg-green-100 border border-green-200 text-green-700">
+        <div class="mb-4 p-4 rounded-lg bg-[#E3F2FD] border border-[#64B5F6] text-[#0D47A1] shadow-md animate-fade-in-down">
             {{ session('success') }}
         </div>
         @endif
 
-        <div class="overflow-x-auto bg-white rounded-lg shadow">
+        <div class="overflow-x-auto bg-white rounded-xl shadow-xl border border-[#64B5F6]/30">
             <div class="align-middle inline-block min-w-full">
-                <table class="min-w-full">
+                <table class="min-w-full divide-y divide-[#E3F2FD]">
                     <thead>
-                        <tr class="bg-gray-50 border-b border-gray-200">
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SKU</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Supplier</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Reorder Level</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        <tr class="bg-gradient-to-r from-[#0D47A1] to-[#1976D2] text-white">
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider">ID</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider">Price</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider">Stock</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider">Category</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider">SKU</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider">Supplier</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider">Reorder Level</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider">Description</th>
+                            <th class="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($products as $product)
-                        <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $product->id }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $product->name }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${{ number_format($product->price, 2) }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $product->stock_quantity }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                        <tr class="hover:bg-[#F8FAFC] transition-colors duration-200">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#1E293B]">{{ $product->id }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[#1E293B]">{{ $product->name }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#0D47A1]">${{ number_format($product->price, 2) }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <div class="flex items-center gap-2">
+                                    <span class="font-medium {{ $product->stock_quantity <= $product->reorder_level ? 'text-red-600' : 'text-[#1E293B]' }}">
+                                        {{ $product->stock_quantity }}
+                                    </span>
+                                    @if($product->stock_quantity <= $product->reorder_level)
+                                        <div class="flex items-center gap-1 px-2 py-0.5 bg-red-50 border border-red-200 rounded">
+                                            <svg class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                            </svg>
+                                            <span class="text-xs font-medium text-red-600">Low Stock</span>
+                                        </div>
+                                    @endif
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-gradient-to-r from-[#0D47A1] to-[#1976D2] text-white shadow-sm">
                                     {{ $product->category }}
                                 </span>
                             </td>
@@ -63,7 +77,12 @@
                             <td class="px-6 py-4 text-sm text-gray-900 max-w-xs truncate">{{ $product->description }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                                 <a href="{{ route('products.edit', ['product' => $product]) }}" 
-                                   class="text-[#3B82F6] hover:text-blue-900">Edit</a>
+                                   class="inline-flex items-center px-3 py-1 bg-[#0D47A1] text-white rounded-lg hover:bg-[#1976D2] transition-colors duration-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                    </svg>
+                                    Edit
+                                </a>
                                 <form action="{{ route('products.destroy', ['product' => $product]) }}" 
                                       method="POST" 
                                       class="inline-block"
@@ -71,7 +90,10 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" 
-                                            class="text-red-600 hover:text-red-900 ml-2">
+                                            class="inline-flex items-center px-3 py-1 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
                                         Delete
                                     </button>
                                 </form>

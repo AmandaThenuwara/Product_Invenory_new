@@ -1,42 +1,79 @@
 <x-app-layout>
-    <x-slot name="header">
-        <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                </svg>
-                {{ __('All Products') }}
-            </h2>
-            <a href="{{ route('products.create') }}" class="px-4 py-2 bg-gradient-to-r from-[#3B82F6] to-[#2563EB] text-white rounded-lg shadow-md hover:shadow-lg hover:from-[#2563EB] hover:to-[#1D4ED8] transition-all flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                {{ __('Add New Product') }}
-            </a>
-        </div>
-    </x-slot>
-    <div class="min-h-screen p-6 flex items-center justify-center">
-        <div class="container max-w-screen-lg mx-auto">
-            <div>
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="font-semibold text-2xl text-[#3B82F6]">Add New Product</h2>
-                    <a href="{{ route('products.index') }}" class="px-4 py-2 bg-[#3B82F6] text-white rounded-lg hover:opacity-90 transition-colors duration-200">
+    <div class="min-h-screen bg-gradient-to-br from-[#F5F5F5] to-[#E3F2FD]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="bg-gradient-to-r from-[#0D47A1] to-[#1976D2] rounded-xl shadow-lg overflow-hidden">
+                <div class="p-6 flex justify-between items-center">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-white/20 p-3 rounded-lg backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="font-bold text-2xl text-white">{{ __('Create New Product') }}</h2>
+                            <p class="text-blue-100 text-sm">Add a new product to your inventory</p>
+                        </div>
+                    </div>
+                    <a href="{{ route('products.index') }}" class="group px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-all duration-200 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        </svg>
                         Back to Products
                     </a>
                 </div>
-                <div class="bg-white rounded-lg shadow-xl p-4 px-4 md:p-8 mb-6 border border-blue-100">
-                    <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-                        <div>
-                            <p class="font-medium text-lg text-[#3B82F6]">Product Details</p>
-                            <p class="text-gray-600">Please fill in all the required fields (*)</p>
-                        </div>
+            </div>
 
-                        <div class="lg:col-span-2">
-                            <form action="{{ route('products.store') }}" method="POST" class="grid gap-4">
+            <div class="mt-6">
+                
+                <div class="bg-white rounded-xl shadow-lg p-8 border border-[#64B5F6]/30">
+                    <div class="grid gap-8 text-sm grid-cols-1 lg:grid-cols-4">
+                        <div class="lg:col-span-1">
+                            <div class="bg-gradient-to-br from-[#0D47A1] to-[#1976D2] text-white p-6 rounded-lg shadow-md sticky top-6">
+                                <p class="font-bold text-xl mb-2">Product Details</p>
+                                <p class="text-blue-100 text-sm mb-6">Please fill in all required fields (*)</p>
+                                <div class="space-y-6">
+                                    <div class="p-4 bg-white/10 rounded-lg backdrop-blur-sm">
+                                        <h3 class="font-semibold mb-2 text-lg">Progress</h3>
+                                        <ul class="space-y-3">
+                                            <li class="flex items-center text-sm">
+                                                <div class="w-6 h-6 rounded-full border-2 border-white/50 flex items-center justify-center mr-3">1</div>
+                                                Basic Information
+                                            </li>
+                                            <li class="flex items-center text-sm">
+                                                <div class="w-6 h-6 rounded-full border-2 border-white/50 flex items-center justify-center mr-3">2</div>
+                                                Inventory Details
+                                            </li>
+                                            <li class="flex items-center text-sm">
+                                                <div class="w-6 h-6 rounded-full border-2 border-white/50 flex items-center justify-center mr-3">3</div>
+                                                Additional Info
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="p-4 bg-white/10 rounded-lg backdrop-blur-sm">
+                                        <h3 class="font-semibold mb-2 text-lg">Tips</h3>
+                                        <ul class="space-y-2 text-sm text-blue-100">
+                                            <li class="flex items-center">
+                                                <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                                Fill in all required fields marked with (*)
+                                            </li>
+                                            <li class="flex items-center">
+                                                <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                                SKU must be unique
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        <div class="lg:col-span-3">
+                            <form action="{{ route('products.store') }}" method="POST" class="grid gap-6">
                                 @csrf
                                 @method('POST')
                                 
-                                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-2">
+                                <div class="grid gap-6 gap-y-4 text-sm grid-cols-1 md:grid-cols-3">
                                     <div>
                                         <label for="name" class="text-[#3B82F6] font-medium">Product Name *</label>
                                         <input type="text" id="name" name="name" required 
@@ -96,22 +133,28 @@
                                     </div>
                                 </div>
 
-                                <div class="md:col-span-2">
+                                <div class="md:col-span-3">
                                     <label for="description" class="text-[#3B82F6] font-medium">Description</label>
                                     <textarea id="description" name="description" rows="4"
                                         class="mt-1 block w-full rounded-lg border-2 px-4 py-2 bg-[#F3F4F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6] focus:border-[#3B82F6] transition-colors"></textarea>
                                 </div>
 
-                                <div class="md:col-span-2 text-right">
+                                <div class="md:col-span-3 text-right">
                                     <div class="inline-flex items-center">
-                                        <button type="submit" class="bg-[#3B82F6] hover:opacity-90 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
-                                            Add Product
+                                        <button type="submit" class="bg-gradient-to-r from-[#0D47A1] to-[#1976D2] hover:from-[#1976D2] hover:to-[#0D47A1] text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                                            <span class="flex items-center gap-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                                </svg>
+                                                Add Product
+                                            </span>
                                         </button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

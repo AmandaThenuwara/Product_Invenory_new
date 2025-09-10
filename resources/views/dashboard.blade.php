@@ -14,25 +14,25 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Stats Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-blue-500 hover:shadow-lg transition duration-300">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
                     <div class="flex items-center">
                         <div class="flex-1">
-                            <h3 class="text-lg font-semibold text-gray-600">Total Products</h3>
-                            <p class="text-2xl font-bold text-blue-600">{{ App\Models\Product::count() ?? 0 }}</p>
+                            <h3 class="text-lg font-semibold text-white opacity-90">Total Products</h3>
+                            <p class="text-3xl font-bold text-white mt-2">{{ App\Models\Product::count() ?? 0 }}</p>
                         </div>
-                        <div class="bg-blue-100 rounded-full p-3">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="bg-white/20 rounded-full p-3">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
                             </svg>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-blue-500 hover:shadow-lg transition duration-300">
+                <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
                     <div class="flex items-center">
                         <div class="flex-1">
-                            <h3 class="text-lg font-semibold text-gray-600">Low Stock Items</h3>
-                            <p class="text-2xl font-bold text-blue-600">
+                            <h3 class="text-lg font-semibold text-white opacity-90">Low Stock Items</h3>
+                            <p class="text-3xl font-bold text-white mt-2">
                                 @php
                                     try {
                                         $lowStock = App\Models\Product::where('stock_quantity', '<', 10)->count();
@@ -43,45 +43,45 @@
                                 {{ $lowStock }}
                             </p>
                         </div>
-                        <div class="bg-blue-100 rounded-full p-3">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="bg-white/20 rounded-full p-3">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                             </svg>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-blue-500 hover:shadow-lg transition duration-300">
+                <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
                     <div class="flex items-center">
                         <div class="flex-1">
-                            <h3 class="text-lg font-semibold text-gray-600">Categories</h3>
-                            <p class="text-2xl font-bold text-blue-600">#</p>
+                            <h3 class="text-lg font-semibold text-white opacity-90">Categories</h3>
+                            <p class="text-3xl font-bold text-white mt-2">4</p>
                         </div>
-                        <div class="bg-blue-100 rounded-full p-3">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="bg-white/20 rounded-full p-3">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                             </svg>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-blue-500 hover:shadow-lg transition duration-300">
+                <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
                     <div class="flex items-center">
                         <div class="flex-1">
-                            <h3 class="text-lg font-semibold text-gray-600">Total Stock Value</h3>
-                            <p class="text-2xl font-bold text-blue-600">
+                            <h3 class="text-lg font-semibold text-white opacity-90">Total Stock Value</h3>
+                            <p class="text-3xl font-bold text-white mt-2">
                                 @php
                                     try {
                                         $totalValue = App\Models\Product::selectRaw('SUM(price * stock_quantity) as total')->value('total') ?? 0;
                                         echo 'LKR' . number_format($totalValue, 2);
                                     } catch (\Exception $e) {
-                                        echo '₱0.00';
+                                        echo 'LKR0.00';
                                     }
                                 @endphp
                             </p>
                         </div>
-                        <div class="bg-blue-100 rounded-full p-3">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="bg-white/20 rounded-full p-3">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
@@ -89,30 +89,108 @@
                 </div>
             </div>
 
-            <!-- Recent Activity Section -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="bg-white rounded-lg shadow">
+            <!-- Recent Activity Sections -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                <!-- Recent Products -->
+                <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Recent Products</h3>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Recent Products</h3>
+                            <a href="{{ route('products.index') }}" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View All
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
                         <div class="space-y-4">
                             @foreach(App\Models\Product::latest()->take(5)->get() as $product)
-                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200">
                                 <div>
                                     <h4 class="font-semibold text-gray-700">{{ $product->name }}</h4>
                                     <p class="text-sm text-gray-600">Stock: {{ $product->stock_quantity ?? 0 }}</p>
                                 </div>
-                                <span class="px-3 py-1 text-sm bg-blue-100 text-blue-600 rounded-full">
-                                    {{ $product->created_at->diffForHumans() }}
-                                </span>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-blue-600 font-semibold">₱{{ number_format($product->price, 2) }}</span>
+                                    <span class="text-xs text-gray-500">{{ $product->created_at->diffForHumans() }}</span>
+                                </div>
                             </div>
                             @endforeach
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow">
+                <!-- Recent Orders -->
+                <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Quick Actions</h3>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Recent Orders</h3>
+                            <a href="{{ route('orders.index') }}" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View All
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="space-y-4">
+                            @foreach(App\Models\Order::latest()->take(5)->get() as $order)
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200">
+                                <div>
+                                    <h4 class="font-semibold text-gray-700">Order #{{ $order->id }}</h4>
+                                    <p class="text-sm text-gray-600">{{ $order->supplier_name }}</p>
+                                </div>
+                                <div class="flex flex-col items-end">
+                                    <span class="px-2 py-1 text-xs rounded-full 
+                                        @if($order->status == 'Completed') bg-green-100 text-green-800
+                                        @elseif($order->status == 'Pending') bg-yellow-100 text-yellow-800
+                                        @else bg-gray-100 text-gray-800 @endif">
+                                        {{ $order->status }}
+                                    </span>
+                                    <span class="text-xs text-gray-500 mt-1">{{ $order->created_at->diffForHumans() }}</span>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Suppliers -->
+                <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Recent Suppliers</h3>
+                            <a href="{{ route('suppliers.index') }}" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View All
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="space-y-4">
+                            @foreach(App\Models\Supplier::latest()->take(5)->get() as $supplier)
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200">
+                                <div>
+                                    <h4 class="font-semibold text-gray-700">{{ $supplier->company_name }}</h4>
+                                    <p class="text-sm text-gray-600">{{ $supplier->contact_person }}</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <a href="mailto:{{ $supplier->email }}" class="text-blue-600 hover:text-blue-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Quick Actions</h3>
                         <div class="grid grid-cols-2 gap-4">
                             <a href="{{ route('products.create') }}" class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition duration-300">
                                 <div class="mr-4 bg-blue-100 rounded-full p-3">
