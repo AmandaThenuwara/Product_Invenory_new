@@ -13,6 +13,10 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
+    
+
+Route::middleware('auth')->group(function () {
+
     Route::get('/product', [ProductController::class, 'index'])->name('products.index');
     Route::get('/product/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('/product', [ProductController::class, 'store'])->name('products.store');
@@ -27,10 +31,6 @@ Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware(['aut
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
-
-Route::middleware('auth')->group(function () {
-
-    
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
