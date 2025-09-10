@@ -33,14 +33,7 @@
                         <div class="flex-1">
                             <h3 class="text-lg font-semibold text-white opacity-90">Low Stock Items</h3>
                             <p class="text-3xl font-bold text-white mt-2">
-                                @php
-                                    try {
-                                        $lowStock = App\Models\Product::where('stock_quantity', '<', 10)->count();
-                                    } catch (\Exception $e) {
-                                        $lowStock = 0;
-                                    }
-                                @endphp
-                                {{ $lowStock }}
+                                0
                             </p>
                         </div>
                         <div class="bg-white/20 rounded-full p-3">
