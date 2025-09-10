@@ -33,7 +33,7 @@
                         <div class="flex-1">
                             <h3 class="text-lg font-semibold text-white opacity-90">Low Stock Items</h3>
                             <p class="text-3xl font-bold text-white mt-2">
-                                0
+                                {{ App\Models\Product::where('stock_quantity', '<=', 10)->count() }}
                             </p>
                         </div>
                         <div class="bg-white/20 rounded-full p-3">
@@ -48,7 +48,7 @@
                     <div class="flex items-center">
                         <div class="flex-1">
                             <h3 class="text-lg font-semibold text-white opacity-90">Categories</h3>
-                            <p class="text-3xl font-bold text-white mt-2">4</p>
+                            <p class="text-3xl font-bold text-white mt-2">{{ App\Models\Product::distinct('category')->count('category') }}</p>
                         </div>
                         <div class="bg-white/20 rounded-full p-3">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
