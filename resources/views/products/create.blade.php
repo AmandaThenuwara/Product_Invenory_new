@@ -76,14 +76,19 @@
                                 <div class="grid gap-6 gap-y-4 text-sm grid-cols-1 md:grid-cols-3">
                                     <div>
                                         <label for="name" class="text-[#3B82F6] font-medium">Product Name *</label>
-                                        <input type="text" id="name" name="name" required 
-                                            class="h-10 border-2 mt-1 rounded-lg px-4 w-full bg-[#F3F4F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6] focus:border-[#3B82F6] transition-colors">
+                                        <div>
+                                            <input type="text" id="name" name="name" required pattern="^[^@].*" 
+                                                oninvalid="this.setCustomValidity('Product name cannot start with @')"
+                                                oninput="this.setCustomValidity('')"
+                                                class="h-10 border-2 mt-1 rounded-lg px-4 w-full bg-[#F3F4F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6] focus:border-[#3B82F6] transition-colors">
+                                            <p class="text-xs text-red-500 mt-1 hidden invalid-feedback">Product name cannot start with @</p>
+                                        </div>
                                     </div>
 
                                     <div>
                                         <label for="price" class="text-[#3B82F6] font-medium">Price *</label>
                                         <div class="relative">
-                                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">$</span>
+                                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">LKR</span>
                                             <input type="number" id="price" name="price" step="0.01" required 
                                                 class="h-10 border-2 mt-1 rounded-lg pl-8 pr-4 w-full bg-[#F3F4F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6] focus:border-[#3B82F6] transition-colors">
                                         </div>

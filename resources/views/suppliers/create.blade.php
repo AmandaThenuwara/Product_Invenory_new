@@ -48,8 +48,11 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="company_name" class="block text-sm font-medium text-[#1E293B]">Company Name *</label>
-                        <input type="text" id="company_name" name="company_name" required
+                        <input type="text" id="company_name" name="company_name" required pattern="^[^@].*"
                             class="mt-1 block w-full rounded-lg border-2 px-4 py-2 bg-[#F3F4F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6] focus:border-[#3B82F6] transition-colors">
+                        @error('company_name')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div>
@@ -66,8 +69,11 @@
 
                     <div>
                         <label for="phone" class="block text-sm font-medium text-[#1E293B]">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required
+                        <input type="tel" id="phone" name="phone" required maxlength="20"
                             class="mt-1 block w-full rounded-lg border-2 px-4 py-2 bg-[#F3F4F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6] focus:border-[#3B82F6] transition-colors">
+                        @error('phone')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
