@@ -52,8 +52,16 @@
 
                                     <div>
                                         <label for="category" class="text-[#3B82F6] font-medium">Category *</label>
-                                        <input type="text" id="category" name="category" required 
+                                        <select id="category" name="category" required 
                                             class="h-10 border-2 mt-1 rounded-lg px-4 w-full bg-[#F3F4F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6] focus:border-[#3B82F6] transition-colors">
+                                            <option value="">Select a category</option>
+                                            <option value="Electronics">Electronics</option>
+                                            <option value="Clothing">Clothing</option>
+                                            <option value="Food">Food</option>
+                                            <option value="Books">Books</option>
+                                            <option value="Furniture">Furniture</option>
+                                            <option value="Other">Other</option>
+                                        </select>
                                     </div>
 
                                     <div>
