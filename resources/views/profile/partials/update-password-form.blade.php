@@ -1,9 +1,11 @@
-<section class="bg-white rounded-lg shadow-md p-6">
-    <header class="border-b border-blue-100 pb-4">
-        <h2 class="text-xl font-semibold text-blue-600 flex items-center gap-2">
-            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-            </svg>
+<section class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+    <header class="border-b border-gray-100 pb-6">
+        <h2 class="text-2xl font-semibold text-gray-800 flex items-center gap-3">
+            <span class="bg-blue-100 p-2 rounded-lg">
+                <svg class="w-6 h-6 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                </svg>
+            </span>
             {{ __('Update Password') }}
         </h2>
 
@@ -56,7 +58,9 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 transition duration-150">
+                {{ __('Save Changes') }}
+            </x-primary-button>
 
             @if (session('status') === 'password-updated')
                 <p
@@ -64,8 +68,8 @@
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                    class="text-sm text-blue-600 bg-blue-50 px-4 py-2 rounded-lg"
+                >{{ __('Password updated successfully.') }}</p>
             @endif
         </div>
     </form>

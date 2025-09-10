@@ -1,9 +1,11 @@
-<section class="bg-white rounded-lg shadow-md p-6 border border-red-200">
-    <header class="border-b border-red-100 pb-4">
-        <h2 class="text-xl font-semibold text-red-600 flex items-center gap-2">
-            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-            </svg>
+<section class="bg-white rounded-xl shadow-lg p-8 border-2 border-red-200">
+    <header class="border-b border-red-100 pb-6">
+        <h2 class="text-2xl font-semibold text-red-600 flex items-center gap-3">
+            <span class="bg-red-100 p-2 rounded-lg">
+                <svg class="w-6 h-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+            </span>
             {{ __('Delete Account') }}
         </h2>
 
@@ -46,7 +48,7 @@
                         id="password"
                         name="password"
                         type="password"
-                        class="mt-1 block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        class="mt-1 block w-full pl-10 pr-3 py-2 border border-red-300 rounded-lg shadow-sm focus:ring-red-500 focus:border-red-500"
                         placeholder="{{ __('Password') }}"
                     />
 
