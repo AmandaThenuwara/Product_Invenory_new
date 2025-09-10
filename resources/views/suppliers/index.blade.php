@@ -1,28 +1,30 @@
 <x-app-layout>
-    <div class="min-h-screen bg-gradient-to-br from-[#F5F5F5] to-[#E3F2FD]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div class="bg-gradient-to-r from-[#0D47A1] to-[#1976D2] rounded-xl shadow-lg overflow-hidden mb-6">
-                <div class="p-6 flex justify-between items-center">
-                    <div class="flex items-center gap-4">
-                        <div class="bg-white/20 p-3 rounded-lg backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h2 class="font-bold text-2xl text-white">{{ __('Suppliers Management') }}</h2>
-                            <p class="text-blue-100 text-sm">Manage your supplier relationships efficiently</p>
-                        </div>
-                    </div>
-                    <a href="{{ route('suppliers.create') }}" 
-                       class="group px-6 py-3 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-all duration-200 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+    <x-slot name="header">
+        <div class="bg-gradient-to-r from-[#0D47A1] to-[#1976D2] rounded-xl shadow-lg overflow-hidden">
+            <div class="p-6 flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <div class="bg-white/20 p-3 rounded-lg backdrop-blur-sm transform hover:scale-105 transition-all duration-300 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white group-hover:rotate-12 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
-                        <span>{{ __('Add New Supplier') }}</span>
-                    </a>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-2xl text-white">{{ __('Suppliers Management') }}</h2>
+                        <p class="text-blue-100 text-sm">Manage your supplier relationships efficiently</p>
+                    </div>
                 </div>
+                <a href="{{ route('suppliers.create') }}" 
+                   class="group px-6 py-3 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-all duration-200 flex items-center gap-2 backdrop-blur-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    <span class="group-hover:translate-x-1 transition-transform">{{ __('Add New Supplier') }}</span>
+                </a>
             </div>
+        </div>
+    </x-slot>
+
+    <div class="py-6 px-4 sm:px-6 lg:px-8 bg-[#F5F5F5]">
             @if(session()->has('success'))
                 <div class="mb-6 p-4 rounded-lg bg-[#E3F2FD] border border-[#64B5F6] text-[#0D47A1] shadow-md animate-fade-in-down">
                     <div class="flex items-center gap-2">
@@ -60,7 +62,8 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-[#1E293B]">{{ $supplier->phone }}</td>
                             <td class="px-6 py-4 text-sm text-[#1E293B] max-w-xs truncate">{{ $supplier->address }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
-                                <a href="#" class="inline-flex items-center px-3 py-1 bg-[#0D47A1] text-white rounded-lg hover:bg-[#1976D2] transition-colors duration-200">
+                                <a href="#" 
+                                   class="inline-flex items-center px-3 py-1 bg-[#0D47A1] text-white rounded-lg hover:bg-[#1976D2] transition-colors duration-200">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                     </svg>

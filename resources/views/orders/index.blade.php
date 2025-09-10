@@ -62,7 +62,7 @@
                                     {{ $order->status }}
                                 </span>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#0D47A1]">${{ number_format($order->total_amount, 2) }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#0D47A1]">LKR {{ number_format($order->total_amount, 2) }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                                 <a href="#" class="inline-flex items-center px-3 py-1 bg-[#0D47A1] text-white rounded-lg hover:bg-[#1976D2] transition-colors duration-200">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

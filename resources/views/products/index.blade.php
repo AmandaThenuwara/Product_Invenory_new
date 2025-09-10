@@ -50,7 +50,7 @@
                         <tr class="hover:bg-[#F8FAFC] transition-colors duration-200">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#1E293B]">{{ $product->id }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-[#1E293B]">{{ $product->name }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#0D47A1]">${{ number_format($product->price, 2) }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#0D47A1]">LKR {{ number_format($product->price, 2) }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm">
                                 <div class="flex items-center gap-2">
                                     <span class="font-medium {{ $product->stock_quantity <= $product->reorder_level ? 'text-red-600' : 'text-[#1E293B]' }}">

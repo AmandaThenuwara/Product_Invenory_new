@@ -97,16 +97,23 @@
 
                                     <div>
                                         <label for="category" class="text-[#3B82F6] font-medium">Category *</label>
-                                        <select id="category" name="category" required 
-                                            class="h-10 border-2 mt-1 rounded-lg px-4 w-full bg-[#F3F4F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6] focus:border-[#3B82F6] transition-colors">
+                                        <select id="category" name="category" required class="h-10 border-2 mt-1 rounded-lg px-4 w-full bg-[#F3F4F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6] focus:border-[#3B82F6] transition-colors">
                                             <option value="">Select a category</option>
-                                            <option value="Electronics">Electronics</option>
-                                            <option value="Clothing">Clothing</option>
-                                            <option value="Food">Food</option>
-                                            <option value="Books">Books</option>
-                                            <option value="Furniture">Furniture</option>
+                                            <option value="Desktops">Desktops</option>
+                                            <option value="Laptops">Laptops</option>
+                                            <option value="Computer Components">Computer Components</option>
+                                            <option value="Storage Devices">Storage Devices</option>
+                                            <option value="Monitors">Monitors</option>
+                                            <option value="Peripherals">Peripherals</option>
+                                            <option value="Printers & Scanners">Printers & Scanners</option>
+                                            <option value="Accessories">Accessories</option>
+                                            <option value="Smartphones">Smartphones</option>
+                                            <option value="Tablets">Tablets</option>
+                                            <option value="Smartwatches & Wearables">Smartwatches & Wearables</option>
+                                            <option value="Mobile Accessories">Mobile Accessories</option>
                                             <option value="Other">Other</option>
                                         </select>
+
                                     </div>
 
                                     <div>

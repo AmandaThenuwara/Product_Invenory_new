@@ -73,7 +73,7 @@
                                 @php
                                     try {
                                         $totalValue = App\Models\Product::selectRaw('SUM(price * stock_quantity) as total')->value('total') ?? 0;
-                                        echo 'LKR' . number_format($totalValue, 2);
+                                        echo 'LKR ' . number_format($totalValue, 2);
                                     } catch (\Exception $e) {
                                         echo 'LKR0.00';
                                     }
@@ -111,7 +111,7 @@
                                     <p class="text-sm text-gray-600">Stock: {{ $product->stock_quantity ?? 0 }}</p>
                                 </div>
                                 <div class="flex flex-col items-end">
-                                    <span class="text-blue-600 font-semibold">₱{{ number_format($product->price, 2) }}</span>
+                                    <span class="text-blue-600 font-semibold">LKR{{ number_format($product->price, 2) }}</span>
                                     <span class="text-xs text-gray-500">{{ $product->created_at->diffForHumans() }}</span>
                                 </div>
                             </div>
