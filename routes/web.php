@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,6 +23,10 @@ Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware(['aut
     Route::get('/supplier', [SupplierController::class, 'index'])->name('suppliers.index');
     Route::get('/supplier/create', [SupplierController::class, 'create'])->name('suppliers.create');
     Route::post('/supplier', [SupplierController::class, 'store'])->name('suppliers.store');
+
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
 
 Route::middleware('auth')->group(function () {
 
