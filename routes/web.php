@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SupplierController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,6 +18,10 @@ Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware(['aut
     Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/product/{product}/update', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/product/{product}/destroy', [ProductController::class, 'destroy'])->name('products.destroy');
+
+    Route::get('/supplier', [SupplierController::class, 'index'])->name('suppliers.index');
+    Route::get('/supplier/create', [SupplierController::class, 'create'])->name('suppliers.create');
+    Route::post('/supplier', [SupplierController::class, 'store'])->name('suppliers.store');
 
 Route::middleware('auth')->group(function () {
 
